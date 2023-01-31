@@ -5,7 +5,7 @@ import RatingStars from "../ui/RatingStars"
 /**
  * Render one hotel in the hotel list.
  */
-const Hotel = ({ hotel }) => {
+const HotelCard = ({ hotel }) => {
  
   /**
    * Accessing thumbnail or default
@@ -52,4 +52,4 @@ const Hotel = ({ hotel }) => {
   )
 }
 
-export default Hotel
+export default HotelCard

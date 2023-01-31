@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react"
 import axios from 'axios'
 
-const HotelBanner = (uid) => {
+const ReviewsBanner = (uid) => {
     const [hotel, setHotel] = useState(null)
     const [isLoading, setLoading] = useState(true);
 
@@ -47,4 +47,4 @@ const HotelBanner = (uid) => {
     )
 };
 
-export default HotelBanner
+export default ReviewsBanner

@@ -5,7 +5,7 @@ import { SelectedLocationContext } from '../../contexts/SelectedLocationContext'
 /**
  * Render the banner (big image) when you select a Card.
  */
-const SliderLocationBanner = ({ location }) => {
+const LocationBanner = ({ location }) => {
     
     /**
      * Accessing Shared context
@@ -50,4 +50,4 @@ const SliderLocationBanner = ({ location }) => {
     )
 }
 
-export default SliderLocationBanner
+export default LocationBanner

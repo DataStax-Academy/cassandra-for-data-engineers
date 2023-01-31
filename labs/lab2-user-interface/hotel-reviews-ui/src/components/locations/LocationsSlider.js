@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react"
 import axios from 'axios'
-import SliderLocationBanner from "./SliderLocationBanner"
-import SliderLocationCard from "./SliderLocationCard"
+import LocationBanner from "./LocationBanner"
+import LocationCard from "./LocationCard"
 
 /**
  * Render top part of home screen with:
@@ -37,14 +37,14 @@ const SliderLocations = () => {
         <section className="slider">
             <div id="slider" className="flexslider">
                 <ul className="slides">
-                    {locations && locations.map((location, index) => <SliderLocationBanner key={index} location={location}/>)}
+                    {locations && locations.map((location, index) => <LocationBanner key={index} location={location}/>)}
                 </ul>
             </div>
             <div id="carousel_slider_wp">
                 <div id="carousel_slider" className="flexslider">
                   <div className="flex-viewport" style={{overflow: "hidden", position: "relative"}}>
                     <ul className="slides"  style={{width: "1000%",transitionDuration: "0s",transform: "translate3d(0px, 0px, 0px)"}} >
-                        {locations && locations.map((location, index) => <SliderLocationCard key={index} location={location} />)}
+                        {locations && locations.map((location, index) => <LocationCard key={index} location={location} />)}
                     </ul>
                   </div>
                     

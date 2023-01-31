@@ -5,7 +5,7 @@ import 'regenerator-runtime/runtime'
 
 import PageHotelDetails from './pages/PageHotelDetails';
 import PageHome from './pages/PageHome';
-import Header from './components/Header';
+import Header from './components/ui/Header';
 
 /**
  * Main Application

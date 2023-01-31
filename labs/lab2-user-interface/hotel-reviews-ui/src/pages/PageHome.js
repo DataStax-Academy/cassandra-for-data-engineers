@@ -2,8 +2,8 @@ import {React, useState} from 'react';
 // Contexts
 import { SelectedLocationContext } from '../contexts/SelectedLocationContext';
 // Components
-import SliderLocations from '../components/slider/SliderLocations';
-import HotelsList from '../components/hotels/HotelsList';
+import LocationsSlider from '../components/locations/LocationsSlider';
+import HotelCardsList from '../components/hotels/HotelCardsList';
 
 /**
  * Main Application
@@ -15,7 +15,7 @@ const PageHome = () => {
    * We also defined the default value at load
    */
   const [selectedLocation, setSelectedLocation] = useState(
-    {city:"Vienna", country:"Austria", size:5}
+    {city:"Vienna", country:"Austria", size: 10}
   );
  
   /**
@@ -24,8 +24,8 @@ const PageHome = () => {
   return (
      <>
         <SelectedLocationContext.Provider value={{selectedLocation, setSelectedLocation}} >
-            <SliderLocations />
-            <HotelsList />
+            <LocationsSlider />
+            <HotelCardsList />
         </SelectedLocationContext.Provider>
     </>
   ) 

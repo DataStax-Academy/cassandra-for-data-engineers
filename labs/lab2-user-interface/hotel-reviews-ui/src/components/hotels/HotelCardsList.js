@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useContext } from "react"
-import Hotel from "./Hotel"
+import HotelCard from "./HotelCard"
 import axios from 'axios'
 
 import { SelectedLocationContext } from '../../contexts/SelectedLocationContext';
@@ -7,7 +7,7 @@ import { SelectedLocationContext } from '../../contexts/SelectedLocationContext'
 /**
  * Render Hotel list at bottom of the page on home creen
  */
-const HotelsList = () => {
+const HotelCardsList = () => {
     
     /**
      * Hold hotel list coming from DB
@@ -53,12 +53,11 @@ const HotelsList = () => {
             </div>
 
             <div className="isotope-wrapper">
-                {hotels && hotels.map((hotel, index) => <Hotel key={index} hotel={hotel} />)}
+                {hotels && hotels.map((hotel, index) => <HotelCard key={index} hotel={hotel} />)}
             </div>
-            <p className="btn_home_align"><a href="tours-grid-isotope.html" className="btn_1 rounded">View all</a></p>
             <hr className="large" />
         </div>
     )
 }
 
-export default HotelsList;
+export default HotelCardsList;

@@ -18,7 +18,7 @@ const Header = () => {
 		</a>
 		<nav id="menu" className="main-menu">
 			<ul>
-				<li><span><a href="#0">Agenda</a></span>
+				<li><span><a href="/">Home</a></span>
 					<ul>
 						<li><a href="index.html">Schedule</a></li>
 						<li>
