@@ -4,9 +4,9 @@ import { SelectedLocationContext } from '../contexts/SelectedLocationContext';
 // Components
 import LocationsSlider from '../components/locations/LocationsSlider';
 import HotelCardsList from '../components/hotels/HotelCardsList';
-
+import Header from '../components/ui/Header';
 /**
- * Main Application
+ * Home Page
  */
 const PageHome = () => {
 
@@ -23,6 +23,7 @@ const PageHome = () => {
    */
   return (
      <>
+        <Header />
         <SelectedLocationContext.Provider value={{selectedLocation, setSelectedLocation}} >
             <LocationsSlider />
             <HotelCardsList />

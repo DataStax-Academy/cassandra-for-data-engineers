@@ -102,12 +102,6 @@ CREATE TABLE IF NOT EXISTS reviews_by_hotel (
 ) WITH CLUSTERING ORDER BY (review_uid DESC);
 
 
-select * from staging_hotel_reviews
-
-// ----------
-
-SELECT hotel_name,hotel_address,average_score,review_date,reviewer_nationality,reviewer_score,total_number_of_reviews_reviewer_has_given,total_number_of_reviews
-FROM staging_hotel_reviews LIMIT 3;
 
 
 CREATE TABLE IF NOT EXISTS staging_hotel_reviews (

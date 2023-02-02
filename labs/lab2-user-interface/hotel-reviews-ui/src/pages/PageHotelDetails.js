@@ -8,6 +8,7 @@ import ReviewsCardList from "../components/reviews/ReviewsCardList";
 import ReviewCreateForm from "../components/reviews/ReviewCreateForm";
 
 import { ReviewsContext } from "../contexts/ReviewsContext";
+import Header from "../components/ui/Header";
 
 /**
  * Details for an Hotels
@@ -35,6 +36,7 @@ const PageHotelDetails = () => {
 
   return (
     <>
+      <Header />
       <ReviewsBanner uid={uid} />
 
       <div className="bg_color_1">
