@@ -36,7 +36,6 @@ const HotelCardsList = () => {
      * Load Hotel list on initialization and update of the context.
      */
     useEffect(() => {
-        console.log("Updating hotels from" + selectedLocation);
         fetchLocationHotels()
     }, [selectedLocation])
     

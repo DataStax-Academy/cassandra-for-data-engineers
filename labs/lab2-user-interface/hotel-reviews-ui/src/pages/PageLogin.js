@@ -1,4 +1,6 @@
-import { React, useState } from 'react';
+import { React, useState,useContext,useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
+import axios from 'axios'
 
 import { UserContext } from '../contexts/UserContext';
 
@@ -7,20 +9,51 @@ import { UserContext } from '../contexts/UserContext';
  */
 const PageLogin = () => {
 
+    const {authenticatedUser, setAuthenticatedUser} = useContext(UserContext);
+
+    const [errorMessage, setErrorMessage] = useState(null);
+	const navigate = useNavigate();
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        if (event.target.email.value === "") {
+			event.target.email.style.backgroundColor = "#f1cacc";
+			setErrorMessage("Email is mandatory")
+		} else if (event.target.password.value === "") {
+			event.target.password.style.backgroundColor = "#f1cacc";
+			setErrorMessage("Password is mandatory")
+		} 
+		axios.get('/.netlify/functions/getUser?email=' + event.target.email.value)
+             .then((response) => {
+                // Update user context
+                setAuthenticatedUser(response);
+                console.log("Authentification");
+                navigate('/',{state:{}});
+             })
+             .catch((error) => {
+                setErrorMessage("Unknown user")
+                event.target.email.style.backgroundColor = "#f1cacc";
+            });
+    }
+
     /**
-   * Selected Location to pick hotel.
-   * We also defined the default value at load
-   */
-    const [authenticatedUser, setAuthenticatedUser] = useState(null);
+     * Load Hotel list on initialization and update of the context.
+     */
+  useEffect(() => {
+    console.log(authenticatedUser);
+  }, [])
 
     return (
         <div id="login_bg">
             <div id="login">
                 <aside>
                     <figure>
-                        <img src="img/datastax-logo.svg" width="255" height="60" alt="" className="logo_sticky" />
+                        <img src="img/datastax-logo.svg" width="255" height="60" alt="" 
+                        className="logo_sticky" />
                     </figure>
-                    <form>
+                    
+                    {!authenticatedUser && 
+                    <form autoComplete="off" method="post" onSubmit={handleSubmit}  >
                         <div className="form-group">
                             <label>Email</label>
                             <input type="email" className="form-control" name="email" id="email" />
@@ -31,19 +64,14 @@ const PageLogin = () => {
                             <input type="password" className="form-control" name="password" id="password" />
                             <i className="icon_lock_alt"></i>
                         </div>
-                        <div className="clearfix add_bottom_30">
-                            <div className="checkboxes float-start">
-                                <label className="container_check">Remember me
-                                    <input type="checkbox"></input>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="float-end mt-1">
-                                <a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+                        {errorMessage && <div id="error_message_ds">{errorMessage}</div>}
+                        <div id="pass-info" className="clearfix">
+                            <button type="submit" className="btn_1 rounded full-width add_top_30">Login to StaxHotels</button>
                         </div>
-                        <a href="#0" className="btn_1 rounded full-width">Login to StaxHotels</a>
-                        <div className="text-center add_top_10">New to StaxHotels? <strong><a href="register.html">Sign up!</a></strong></div>
+                        <div className="text-center add_top_10">New to StaxHotels? <strong><a href="/register">Sign up!</a></strong></div>
                     </form>
+                    }
+                    {authenticatedUser && <div><p>You are authenticated</p></div>}
                     <div className="copy">© DataStax Developers</div>
                 </aside>
             </div>

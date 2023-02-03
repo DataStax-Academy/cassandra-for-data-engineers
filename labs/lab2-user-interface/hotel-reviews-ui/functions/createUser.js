@@ -18,8 +18,7 @@ exports.handler = async (event, context) => {
   createUserPayload.password = await bcrypt.hash(createUserPayload.password, 10);
   createUserPayload.flag_validated = true;
   createUserPayload.flag_blocked = false;
-  createUserPayload.nationality = "French";
-
+  
   //HashPassword with bcrypt
 
   const astraRestClient = await getClient();

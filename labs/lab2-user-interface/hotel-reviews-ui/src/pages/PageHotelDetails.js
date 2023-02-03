@@ -8,12 +8,16 @@ import ReviewsCardList from "../components/reviews/ReviewsCardList";
 import ReviewCreateForm from "../components/reviews/ReviewCreateForm";
 
 import { ReviewsContext } from "../contexts/ReviewsContext";
+import { UserContext } from "../contexts/UserContext";
+
 import Header from "../components/ui/Header";
 
 /**
  * Details for an Hotels
  */
 const PageHotelDetails = () => {
+
+  const {authenticatedUser, setAuthenticatedUser} = useContext(UserContext);
   const [hotelReviews, setHotelReviews] = useState(null)
 
   const queryParameters = new URLSearchParams(window.location.search)
@@ -59,7 +63,8 @@ const PageHotelDetails = () => {
                 <h2>Reviews</h2>
                 <ReviewsSummary />
                 <ReviewsCardList />
-                <ReviewCreateForm />
+                {authenticatedUser && <ReviewCreateForm />}
+                {!authenticatedUser && <div><p style={{color:'blue'}}>Please authenticate to add reviews</p></div>}
               </section>
             </ReviewsContext.Provider>
           </div>

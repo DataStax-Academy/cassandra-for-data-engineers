@@ -1,10 +1,12 @@
-import {React, useState} from 'react';
+import {React, useState } from 'react';
 // Contexts
 import { SelectedLocationContext } from '../contexts/SelectedLocationContext';
+import { UserContext } from '../contexts/UserContext';
 // Components
 import LocationsSlider from '../components/locations/LocationsSlider';
 import HotelCardsList from '../components/hotels/HotelCardsList';
 import Header from '../components/ui/Header';
+
 /**
  * Home Page
  */
@@ -17,7 +19,7 @@ const PageHome = () => {
   const [selectedLocation, setSelectedLocation] = useState(
     {city:"Vienna", country:"Austria", size: 10}
   );
- 
+  
   /**
    * Render homepage with shared location
    */

@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
         return {
             headers: '{Content-Type: application/json}',
             statusCode: 404,
-            body: JSON.stringify("This user does not exists"),
+            body: JSON.stringify({}),
             headers: {
               'Content-Type': 'application/json'
             },

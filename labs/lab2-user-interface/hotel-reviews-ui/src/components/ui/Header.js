@@ -1,9 +1,19 @@
-import React from "react";
+import { React, useContext } from "react"
+import { UserContext } from "../../contexts/UserContext";
+import { useNavigate} from 'react-router-dom';
 
 const Header = () => {
+
+	const {authenticatedUser, setAuthenticatedUser} = useContext(UserContext);
+	const navigate = useNavigate();
+
+	const logout = () => {
+		setAuthenticatedUser(null);
+		navigate('/login',{state:{}});
+    };
+
     return (
         <header className="header menu_fixed">
-		<div id="preloader"><div data-loader="circle-side"></div></div>
 		<div id="logo">
 			<a href="index.html">
 				<img src="img/cassandra_summit_logo.svg" width="350" height="100" alt="" className="logo_normal" />
@@ -19,8 +29,9 @@ const Header = () => {
 		<nav id="menu" className="main-menu">
 			<ul>
 				<li><span><a href="/">Home</a></span></li>
-				<li><span><a href="/login">Login</a></span></li>
-				<li><span><a href="/register">Register</a></span></li>
+				{!authenticatedUser && <li><span><a href="/login">Login</a></span></li>}
+				{!authenticatedUser && <li><span><a href="/register">Register</a></span></li>}
+				{authenticatedUser && <li><span><a href="logout">Logout</a></span></li>}
 			</ul>
 		</nav>
 	</header>
