@@ -1,8 +1,10 @@
 import { React, useState,useContext,useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 import axios from 'axios'
-
 import { UserContext } from '../contexts/UserContext';
+
+import bcrypt from "bcryptjs-react";
+
 
 /**
  * Home Page
@@ -25,10 +27,18 @@ const PageLogin = () => {
 		} 
 		axios.get('/.netlify/functions/getUser?email=' + event.target.email.value)
              .then((response) => {
-                // Update user context
-                setAuthenticatedUser(response);
-                console.log("Authentification");
-                navigate('/',{state:{}});
+                // User exist, checking password
+                let password= bcrypt.hashSync(event.target.password.value, 10);
+                console.log('brypt:' + password);
+                console.log('db:'+response.data.password);
+                //if (password !== response.data.password) {
+                if (false) {
+                    setErrorMessage("Invalid Password")
+                    event.target.password.style.backgroundColor = "#f1cacc";
+                } else {
+                    setAuthenticatedUser(response.data);
+                    navigate('/',{state:{}});
+                }
              })
              .catch((error) => {
                 setErrorMessage("Unknown user")

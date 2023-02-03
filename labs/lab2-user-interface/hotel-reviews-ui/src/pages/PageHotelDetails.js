@@ -63,7 +63,7 @@ const PageHotelDetails = () => {
                 <h2>Reviews</h2>
                 <ReviewsSummary />
                 <ReviewsCardList />
-                {authenticatedUser && <ReviewCreateForm />}
+                {authenticatedUser && <ReviewCreateForm uid={uid}/>}
                 {!authenticatedUser && <div><p style={{color:'blue'}}>Please authenticate to add reviews</p></div>}
               </section>
             </ReviewsContext.Provider>

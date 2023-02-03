@@ -14,7 +14,7 @@ const ReviewsCardList = () => {
     const {hotelReviews} = useContext(ReviewsContext);
 
     useEffect(() => {
-    }, [])
+    }, [hotelReviews])
 
     return (
         <div className="reviews-container">
