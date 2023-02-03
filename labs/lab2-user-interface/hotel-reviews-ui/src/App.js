@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
@@ -23,6 +23,7 @@ const App = () => {
          <Route path="/login" element={<PageLogin />} />
          <Route path="/register" element={<PageRegister />} />
          <Route path="/hotel-details" element={<PageHotelDetails />} />
+         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>  
   ) 

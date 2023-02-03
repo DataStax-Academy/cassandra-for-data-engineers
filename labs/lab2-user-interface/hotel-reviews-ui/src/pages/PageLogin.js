@@ -24,9 +24,9 @@ const PageLogin = () => {
                         <div className="form-group">
                             <label>Email</label>
                             <input type="email" className="form-control" name="email" id="email" />
-                            <i class="icon_mail_alt"></i>
+                            <i className="icon_mail_alt"></i>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Password</label>
                             <input type="password" className="form-control" name="password" id="password" />
                             <i className="icon_lock_alt"></i>
@@ -44,7 +44,7 @@ const PageLogin = () => {
                         <a href="#0" className="btn_1 rounded full-width">Login to StaxHotels</a>
                         <div className="text-center add_top_10">New to StaxHotels? <strong><a href="register.html">Sign up!</a></strong></div>
                     </form>
-                    <div class="copy">© DataStax Developers</div>
+                    <div className="copy">© DataStax Developers</div>
                 </aside>
             </div>
         </div>

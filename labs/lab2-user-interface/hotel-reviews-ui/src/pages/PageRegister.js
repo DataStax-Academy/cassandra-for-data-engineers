@@ -1,9 +1,22 @@
 import { React, useState } from 'react';
+import { useNavigate} from 'react-router-dom';
+
 
 /**
  * Home Page
  */
 const PageRegister = () => {
+
+	// Something goes wrong with reg
+	const [errorMessage, setErrorMessage] = useState(null);
+	const navigate = useNavigate();
+
+	const handleSubmit = event => {
+        event.preventDefault();
+		console.log(event.target.lastname.value);
+
+		navigate('/Login',{state:{}});
+    }
 
 	return (
 		<div id="login_bg">
@@ -11,40 +24,45 @@ const PageRegister = () => {
 				<aside>
 					<figure>
 						<a href="/login">
-							<img src="img/datastax-logo.svg" width="155" height="36" alt="" class="logo_sticky" />
+							<img src="img/datastax-logo.svg" width="155" 
+								height="36" alt="" className="logo_sticky" />
 						</a>
 					</figure>
-					<form autocomplete="off">
-						<div class="form-group">
+					<div className="errorMessage">Something Wrong</div>
+					<form autoComplete="off" method="post" onSubmit={handleSubmit}  >
+						<div className="form-group">
 							<label>Your Name</label>
-							<input class="form-control" type="text" />
-							<i class="ti-user"></i>
+							<input className="form-control" type="text"  id="firstname"/>
+							<i className="ti-user"></i>
 						</div>
-						<div class="form-group">
+						<div className="form-group">
 							<label>Your Last Name</label>
-							<input class="form-control" type="text" />
-							<i class="ti-user"></i>
+							<input className="form-control" type="text"  id="lastname"/>
+							<i className="ti-user"></i>
 						</div>
-						<div class="form-group">
+						<div className="form-group">
 							<label>Your Email</label>
-							<input class="form-control" type="email" />
-							<i class="icon_mail_alt"></i>
+							<input className="form-control" type="email"  id="email"/>
+							<i className="icon_mail_alt"></i>
 						</div>
-						<div class="form-group">
+						<div className="form-group">
 							<label>Your password</label>
-							<input class="form-control" type="password" id="password1" />
-							<i class="icon_lock_alt"></i>
+							<input className="form-control" type="password" id="password1" />
+							<i className="icon_lock_alt"></i>
 						</div>
-						<div class="form-group">
-							<label>Confirm password</label>
-							<input class="form-control" type="password" id="password2" />
-							<i class="icon_lock_alt"></i>
+						<div className="form-group">
+							<label>Confirm Password</label>
+							<input className="form-control" type="password" id="password2" />
+							<i className="icon_lock_alt"></i>
 						</div>
-						<div id="pass-info" class="clearfix"></div>
-						<a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
-						<div class="text-center add_top_10">Already have an acccount? <strong><a href="/login">Sign In</a></strong></div>
+						<div id="pass-info" className="clearfix">
+							<button type="submit" className="btn_1 rounded full-width add_top_30">Register Now!</button>
+						</div>
+						<div className="text-center add_top_10">Already have an acccount? <strong>
+							<a href="/login">Sign In</a>
+						</strong></div>
 					</form>
-					<div class="copy">© DataStax Developers</div>
+					<div className="copy">© DataStax Developers</div>
 				</aside>
 			</div>
 		</div>
