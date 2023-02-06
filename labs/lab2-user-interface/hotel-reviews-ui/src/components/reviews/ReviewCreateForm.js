@@ -7,8 +7,7 @@ import axios from 'axios'
 const CreateReviewForm = ({uid}) => {
 
 	const {authenticatedUser} = useContext(UserContext);
-	const {hotelReviews} = useContext(ReviewsContext);
-
+	const {setHotelReviews}   = useContext(ReviewsContext);
 
 	const handleSubmit = event => {
         event.preventDefault();
@@ -18,8 +17,15 @@ const CreateReviewForm = ({uid}) => {
 		body.positive_review=event.target.positive_review.value;
 		body.reviewer_nationality=authenticatedUser.nationality;
 		body.reviewer_score=parseInt(event.target.score.value, 10);
-		console.log(body)
 		axios.post('/.netlify/functions/createReview', body);
+
+        // Update review list context
+		axios.get('/.netlify/functions/getHotelReviews?uid=' + uid)
+		     .then((reviews)=>{ setHotelReviews(reviews.data) });
+
+		event.target.negative_review.value='';
+		event.target.positive_review.value='';
+		event.target.score.value=1;
 	}
 
 	return (

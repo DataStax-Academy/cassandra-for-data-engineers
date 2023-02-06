@@ -102,7 +102,27 @@ CREATE TABLE IF NOT EXISTS reviews_by_hotel (
 ) WITH CLUSTERING ORDER BY (review_uid DESC);
 
 
+CREATE TABLE IF NOT EXISTS users (
+   email           text,
+   lastname        text,
+   firstname       text,
+   nationality     text,
+   password        text,
+   flag_validated  boolean,
+   flag_blocked    boolean,
+   PRIMARY KEY ((email))
+);
 
+CREATE TABLE IF NOT EXISTS events_by_user (
+   email       text,
+   uid         timeuuid,
+   action      text,
+   target_type text,
+   target_uid  text,
+   PRIMARY KEY ((email), uid )
+) WITH CLUSTERING ORDER BY (uid DESC);
+
+// --
 
 CREATE TABLE IF NOT EXISTS staging_hotel_reviews (
   uid                                        uuid,

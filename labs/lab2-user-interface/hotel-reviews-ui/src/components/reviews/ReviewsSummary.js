@@ -41,7 +41,7 @@ const ReviewsSummary = () => {
             '4andMore':parseInt((100*reviewMap[4])/hotelReviews.length, 10), 
             '6andMore':parseInt((100*reviewMap[6])/hotelReviews.length, 10), 
             '8andMore':parseInt((100*reviewMap[8])/hotelReviews.length, 10)});
-        setAvgScore(total_score / hotelReviews.length);
+        setAvgScore(Math.round(10 * total_score / hotelReviews.length)/10);
   }
  }
 

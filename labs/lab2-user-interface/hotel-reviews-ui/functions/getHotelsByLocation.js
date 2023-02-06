@@ -26,6 +26,11 @@ exports.handler = async (event, context) => {
         + queryParameters.city + '"\}\}'
         + '&page-size=' + pageSize)
     const locations = Object.keys(res.data).map((item) => res.data[item]);
+
+    locations.sort(function(a, b) {
+      return parseFloat(b.avg_rate) - parseFloat(a.avg_rate);
+    });
+
     return {
       headers: '{Content-Type: application/json}',
       statusCode: 200,

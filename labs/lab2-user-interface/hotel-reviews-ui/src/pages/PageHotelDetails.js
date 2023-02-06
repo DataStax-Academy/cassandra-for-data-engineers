@@ -57,7 +57,7 @@ const PageHotelDetails = () => {
         <div className="container margin_60_35">
 				<div className="row">
 					<div className="col-lg-8">
-            <ReviewsHotelDescription />
+            <ReviewsHotelDescription uid={uid} />
             <ReviewsContext.Provider value={{hotelReviews, setHotelReviews}} >
               <section id="reviews">
                 <h2>Reviews</h2>

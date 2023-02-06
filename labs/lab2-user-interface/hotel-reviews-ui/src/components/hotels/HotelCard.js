@@ -22,7 +22,6 @@ const HotelCard = ({ hotel }) => {
             <figure>
                 <small>{hotel.city}</small>
                 <Link to={{ pathname: '/hotel-details', search: "?" + new URLSearchParams({uid: hotel.uid}).toString() }}>
-                
                     <img src={hotel_thumbnail} className="img-fluid" alt="" width="800" height="533" />
                       <div className="read_more"><span>Read more</span>
                       </div>
@@ -34,7 +33,10 @@ const HotelCard = ({ hotel }) => {
                 <div className="cat_star">
                   <RatingStars rating={hotel.avg_rate}/>
                 </div>
-                <h3><a href="hotel-detail.html">{hotel.name}</a></h3>
+                
+                <Link to={{ pathname: '/hotel-details', search: "?" + new URLSearchParams({uid: hotel.uid}).toString() }}>
+                <h3>{hotel.name}</h3>
+                </Link>
                 <p>{hotel.address}</p>
                 <span className="price">From <strong>$ {hotel.price}</strong> /per person</span>
             </div>

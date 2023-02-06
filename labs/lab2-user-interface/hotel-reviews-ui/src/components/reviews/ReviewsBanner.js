@@ -22,6 +22,7 @@ const ReviewsBanner = (uid) => {
         fetchHotelsInformation()
     }, [])
 
+
     return (
         <div>     
             {
@@ -35,7 +36,7 @@ const ReviewsBanner = (uid) => {
                                 <section className="hero_in hotels_detail">
                                     <div className="wrapper">
                                         <div className="container">
-                                            <h1 className="fadeInUp"><span></span>{hotel.name}</h1>
+                                           <img src={hotel.thumbnail} width='100%' />
                                         </div>
                                     </div>
                                 </section>
