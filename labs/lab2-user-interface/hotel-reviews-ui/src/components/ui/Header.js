@@ -29,9 +29,15 @@ const Header = () => {
 		<nav id="menu" className="main-menu">
 			<ul>
 				<li><span><a href="/">Home</a></span></li>
-				{!authenticatedUser && <li><span><a href="/login">Login</a></span></li>}
-				{!authenticatedUser && <li><span><a href="/register">Register</a></span></li>}
-				{authenticatedUser && <li><span><a href="logout">Logout</a></span></li>}
+
+				{!authenticatedUser && 
+					<>
+					<li><span><a href="/login" className="btn_1" style={{paddingTop: '10px'}}>Login</a></span></li>
+					<li><span><a href="/register" className="btn_1" style={{paddingTop: '10px', marginLeft:'10px'}}> Register</a></span></li>
+					</>
+				}
+				{authenticatedUser && 
+				 	<li><span><a href="logout" style={{paddingTop: '10px'}}>Logout</a></span></li>}
 			</ul>
 		</nav>
 	</header>

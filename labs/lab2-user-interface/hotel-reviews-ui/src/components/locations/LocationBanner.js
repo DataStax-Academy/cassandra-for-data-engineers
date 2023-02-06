@@ -1,25 +1,10 @@
-import React, { useContext } from "react"
-
-import { SelectedLocationContext } from '../../contexts/SelectedLocationContext';
+import React from "react"
 
 /**
  * Render the banner (big image) when you select a Card.
  */
 const LocationBanner = ({ location }) => {
     
-    /**
-     * Accessing Shared context
-     */
-    const {setSelectedLocation} = useContext(SelectedLocationContext);
- 
-    /**
-     * Updating the shared context for bottom page to refresh
-     */
-    const updateSeletedLocation = () => {
-        setSelectedLocation(location);
-        console.log('Location updated with: ' + location.city);
-    }
-
     /**
      * Easier to read and edit on its variable
      */
@@ -42,9 +27,8 @@ const LocationBanner = ({ location }) => {
             <div className="meta">
                 <h3>{location.city} {location.pitch}</h3>
                 <div className="info">
-                    <p>{location.hotel_count} hotel(s) </p>
+                <p>{location.hotel_count} hotel(s) in {location.city}</p>
                 </div>
-                <a onClick={updateSeletedLocation} className="btn_1">Show Hotels in {location.city}</a>
             </div>
         </li>
     )
